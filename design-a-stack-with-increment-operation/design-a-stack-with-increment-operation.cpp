@@ -11,24 +11,12 @@ public:
     
     void push(int x) {
 
-      if(top<size-1)
-      {
-        top += 1;
-        arr[top] = x;
-      }
+      top<size-1 ? arr[++top]=x : NULL;
         
     }
     
     int pop() {
-      if(top>=0)
-      {
-        return arr[top--];;
-      }else
-      {
-        return -1;
-      }
-
-        
+      return top>=0 ? arr[top--]  : -1;
     }
     
     void increment(int k, int val) {
