@@ -14,7 +14,7 @@ public:
             dp[i][0] = parent[i];
         }
         
-        // filling sparse table by using dp
+        // filling `sparse table` by using dp
         for(int i=0;i<n;i++){
             for(int j=1;j<m;j++){
                 
@@ -26,12 +26,6 @@ public:
             }
         }
         
-        // for(auto& a : dp){
-        //     for(auto& b : a){
-        //         cout<<b<<" ";
-        //     }
-        //     cout<<endl;
-        // }
     }
     
     int getKthAncestor(int node, int k) {
@@ -41,18 +35,12 @@ public:
         
         for(int i=m-1;i>=0;i--){
             if((k>>i)&1){
+                node = dp[node][i];
                 if(node == -1)
                     return node;
-                node = dp[node][i];
             }
         }
         
         return node;
     }
 };
-
-/**
- * Your TreeAncestor object will be instantiated and called as such:
- * TreeAncestor* obj = new TreeAncestor(n, parent);
- * int param_1 = obj->getKthAncestor(node,k);
- */
