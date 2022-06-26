@@ -1,20 +1,30 @@
-class Solution {
-public:
-    
-    
-    int rob(vector<int>& nums) {
-        
-        if( size(nums) == 1)
-            return nums[0];
-        
-        vector<int> dp(nums);
-        dp[1] = max(nums[0],nums[1]);
-        
-        for(int i=2;i<size(nums);i++){
-            dp[i] = max(dp[i-2]+nums[i],dp[i-1]);
+class Solution
+{
+    public:
+        int rob(vector<int> &nums)
+        {
+            int n = nums.size();
+            vector<int> dp(n,-1);
+            int ans = robRecursion(nums,n-1,dp);
+            return ans;
         }
-
-        return dp.back();
+    
         
-    }
+        int robRecursion(vector<int>& nums,int idx,vector<int>& dp){
+            
+            if(idx == 0) return nums[idx];
+            
+            if(idx < 0)  return 0;
+            
+            if(dp[idx] != -1) return dp[idx];
+            
+            
+            int pick = nums[idx] + robRecursion(nums,idx-2,dp);
+            
+            int notPick = robRecursion(nums,idx-1,dp);
+            
+            return dp[idx] = max(pick,notPick);
+            
+            
+        }
 };
