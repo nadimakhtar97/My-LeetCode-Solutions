@@ -1,30 +1,24 @@
-class Solution
-{
-    public:
-        int rob(vector<int> &nums)
-        {
-            int n = nums.size();
-            vector<int> dp(n,-1);
-            int ans = robRecursion(nums,n-1,dp);
-            return ans;
-        }
-    
+class Solution {
+public:
+    int rob(vector<int>& nums) {
         
-        int robRecursion(vector<int>& nums,int idx,vector<int>& dp){
+        
+        int n = nums.size();
+        vector<int> dp(n,0);
+        dp[0] = nums[0];
+        
+        for(int i=1;i<n;i++){
             
-            if(idx == 0) return nums[idx];
+            int take = nums[i];
+            if( i-2 >= 0)
+                take += dp[i-2];
+            int notTake = dp[i-1];
             
-            if(idx < 0)  return 0;
-            
-            if(dp[idx] != -1) return dp[idx];
-            
-            
-            int pick = nums[idx] + robRecursion(nums,idx-2,dp);
-            
-            int notPick = robRecursion(nums,idx-1,dp);
-            
-            return dp[idx] = max(pick,notPick);
-            
+            dp[i] = max(take,notTake);
             
         }
+        
+        return dp[n-1];
+        
+    }
 };
