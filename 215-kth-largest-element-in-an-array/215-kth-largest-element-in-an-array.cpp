@@ -2,10 +2,9 @@ class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
         
-        sort(nums.begin(),nums.end());
-        int n = nums.size();
-        
-        return nums[n-k];
+       int n = nums.size();
+       nth_element(nums.begin(),nums.end()-k,nums.end());
+       return nums[n-k];
         
     }
 };
