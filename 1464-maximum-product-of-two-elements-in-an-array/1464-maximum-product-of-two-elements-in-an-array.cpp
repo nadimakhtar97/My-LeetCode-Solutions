@@ -2,7 +2,7 @@ class Solution {
 public:
     int maxProduct(vector<int>& nums) {
        
-        priority_queue<int,vector<int>> pq(nums.begin(),nums.end());
+        priority_queue<int> pq(nums.begin(),nums.end());
         
         int f = pq.top();
         pq.pop();
