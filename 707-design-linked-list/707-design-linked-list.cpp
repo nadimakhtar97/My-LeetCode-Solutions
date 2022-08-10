@@ -21,18 +21,7 @@ public:
         tail->prev = head;
     }
     
-    // void print(){
-    //     DLL* node = head->next;
-    //     while(node != tail){
-    //         cout<<node->data<<" ";
-    //         node = node->next;
-    //     }
-    //     cout<<endl;
-    // }
-    
     int get(int index) {
-        // cout<<index<<": ";
-        // print();
         DLL* node = head->next;
         for(int i=0;i<index;i++){
             node = node->next;
@@ -49,19 +38,15 @@ public:
     }
     
     void addAtHead(int val) {
-        // cout<<"addAtHead "<<val<<":";
         
         DLL *node = new DLL(val);
         node->next = head->next;
         node->prev = head;
         node->next->prev = node->prev->next = node;
-        // print();
         
     }
     
     void addAtTail(int val) {
-        // cout<<"addAtTail "<<val<<":";
-        
         DLL *node = new DLL(val);
         node->next = tail;
         node->prev = tail->prev;
@@ -71,7 +56,6 @@ public:
     }
     
     void addAtIndex(int index, int val) {
-        // cout<<"addAtIndex "<<index<<" val "<<val<<":";
         DLL* node = head;
         for(int i=0;i<index;i++){
             node = node->next;
@@ -79,17 +63,14 @@ public:
                 return;
             }
         }
-        // cout<<"node->val = "<<node->data<<endl;
         DLL* newNode = new DLL(val);
         newNode->next = node->next;
         newNode->prev = node;
         newNode->next->prev = newNode->prev->next = newNode;
-        // print();
         
     }
     
     void deleteAtIndex(int index) {
-        // cout<<"deleteAtIndex "<<index<<":";
         DLL* node = head->next;
         for(int i=0;i<index;i++){
             node = node->next;
@@ -100,7 +81,6 @@ public:
         
         node->next->prev = node->prev;
         node->prev->next = node->next;
-        // print();
     }
 };
 
